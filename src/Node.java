@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -39,7 +40,7 @@ public class Node {
    */
   public Node(List<Integer> list) {
 
-    if (list.isEmpty()) {
+    if (list == null || list.isEmpty()) {
       throw new IllegalArgumentException();
     }
 
@@ -62,7 +63,12 @@ public class Node {
    * @return A list of integers representing the values in the linked list.
    */
   public List<Integer> toList() {
-    // TODO: Implement this
-    return null;
+    List<Integer> nodeList = new LinkedList<>();
+    Node current = this;
+    while(current != null) {
+      nodeList.add(current.value);
+      current = current.next;
+    }
+    return nodeList;
   }
 }
